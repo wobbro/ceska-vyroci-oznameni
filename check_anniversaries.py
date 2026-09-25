@@ -148,6 +148,7 @@ def send_notification(title, body):
             "Title": title.encode("utf-8"),
             "Priority": "high",
             "Tags": "books,cz",
+            "Icon": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Small_coat_of_arms_of_the_Czech_Republic.svg/500px-Small_coat_of_arms_of_the_Czech_Republic.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20120606002617",
         },
         timeout=15,
     )
