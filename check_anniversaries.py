@@ -146,7 +146,7 @@ def send_notification(title, body):
         data=body.encode("utf-8"),
         headers={
             "Title": title.encode("utf-8"),
-            "Priority": "default",
+            "Priority": "high",
             "Tags": "books,cz",
         },
         timeout=15,
