@@ -1,0 +1,27 @@
+name: Ceska vyroci - denni kontrola
+
+on:
+  schedule:
+    # 6:00 UTC = 7:00 nebo 8:00 v Praze (podle letního/zimniho casu)
+    - cron: "0 6 * * *"
+  workflow_dispatch: {}  # umoznuje rucni spusteni tlacitkem "Run workflow"
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run check
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: python check_anniversaries.py
